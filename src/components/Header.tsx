@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from '../assets/CRT_logo.png';
 
 const Header = () => {
   const naviagte = useNavigate();
@@ -8,7 +9,7 @@ const Header = () => {
   return (
     <Wrapper>
       <LogoContainer>
-        <Logo onClick={() => naviagte('/')} />
+        <Logo src={logo} alt="logo" onClick={() => naviagte('/')} />
       </LogoContainer>
       <NaviContainer>
         <Contents onClick={() => naviagte('/survey')}>성격 유형 검사</Contents>
@@ -34,10 +35,8 @@ const Wrapper = styled.div`
 
 const LogoContainer = styled.div``;
 
-const Logo = styled.div`
-  width: 3rem;
-  height: 3rem;
-  background-color: gray;
+const Logo = styled.img`
+  width: 45%;
 `;
 
 const NaviContainer = styled.div`
