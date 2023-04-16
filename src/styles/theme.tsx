@@ -25,6 +25,11 @@ const common = {
     justify-contents: center;
     align-items: center;
   `,
+
+  bottomImage: `
+    width : 100vw;
+    position : absolute;
+  `,
 };
 
 const theme = {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/CRT_logo.png';
+import HeaderBottomLine from '../assets/HeaderBottomLine.png';
 
 const Header = () => {
   const naviagte = useNavigate();
@@ -17,23 +18,22 @@ const Header = () => {
         <Contents onClick={() => naviagte('/teammembers')}>Teams</Contents>
       </NaviContainer>
       <LanguageContents>언어</LanguageContents>
+      <BottomImage src={HeaderBottomLine} alt="bottomLine" />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
+  position: relative;
   background-color: white;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
-
-  border-bottom: 1px solid black;
 `;
 
-const LogoContainer = styled.div``;
+const LogoContainer = styled.div`
+  padding: 2rem;
+`;
 
 const Logo = styled.img`
   width: 45%;
@@ -57,7 +57,13 @@ const Contents = styled.div`
 `;
 
 const LanguageContents = styled(Contents)`
+  padding: 2rem;
   font-weight: 500;
+`;
+
+const BottomImage = styled.img`
+  ${({ theme }) => theme.common.bottomImage}
+  bottom : 0;
 `;
 
 export default Header;

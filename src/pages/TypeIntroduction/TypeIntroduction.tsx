@@ -1,39 +1,61 @@
 import React from 'react';
 import Header from '../../components/Header';
-import styled from 'styled-components';
+import TitleHeader from '../../components/TitleHeader';
+import TypeContainer from './components/TypeContainer';
+import AnalystBottomLine from '../../assets/AnalystBottomLine.png';
+import DiplomatBottomLine from '../../assets/DiplomatBottomLine.png';
+import ExplorerBottomLine from '../../assets/ExplorerBottomLine.png';
+import ManagerBottomLine from '../../assets/ManagerBottomLine.png';
 
 const TypeIntroduction = () => {
   return (
     <div>
       <Header />
-      <ContentsHeader>성격유형</ContentsHeader>
-      <TypeContainer style={{ background: '#E2E9FF' }}>분석가형</TypeContainer>
-      <TypeContainer style={{ background: '#D5FFDB' }}>외교관형</TypeContainer>
-      <TypeContainer style={{ background: '#CEFFFF' }}>관리자형</TypeContainer>
-      <TypeContainer style={{ background: '#FFF7B1' }}>탐험가형</TypeContainer>
+      <TitleHeader title="성격 유형" />
+      {TYPE_ARRAY.map(data => {
+        return (
+          <TypeContainer
+            key={data.id}
+            type={data.type}
+            typeText={data.typeText}
+            themeColor={data.themeColor}
+            bottomLine={data.bottomLine}
+          />
+        );
+      })}
     </div>
   );
 };
 
-const ContentsHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 20vh;
-  color: white;
-  font-size: 3rem;
-  font-weight: 700;
-`;
-
-const TypeContainer = styled.div`
-  margin-top: 1vh;
-  width: 100%;
-  height: 50vh;
-  text-align: center;
-  color: white;
-  font-size: 12rem;
-  font-weight: 700;
-`;
+const TYPE_ARRAY = [
+  {
+    id: 1,
+    themeColor: '#E2E9FF',
+    typeText: '분석가형',
+    type: 'Analyst',
+    bottomLine: AnalystBottomLine,
+  },
+  {
+    id: 1,
+    themeColor: '#D5FFDB',
+    typeText: '외교관형',
+    type: 'Diplomat',
+    bottomLine: DiplomatBottomLine,
+  },
+  {
+    id: 1,
+    themeColor: '#CEFFFF',
+    typeText: '관리자형',
+    type: 'Manager',
+    bottomLine: ExplorerBottomLine,
+  },
+  {
+    id: 1,
+    themeColor: '#FFF7B1',
+    typeText: '탐험가형',
+    type: 'Explorer',
+    bottomLine: ManagerBottomLine,
+  },
+];
 
 export default TypeIntroduction;
