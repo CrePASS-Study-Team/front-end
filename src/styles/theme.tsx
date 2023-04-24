@@ -27,7 +27,6 @@ const common = {
   `,
 
   bottomImage: `
-    width : 100vw;
     position : absolute;
   `,
 };

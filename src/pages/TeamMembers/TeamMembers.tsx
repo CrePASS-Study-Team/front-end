@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../../components/Header';
+import ContactUs from './components/ContactUs';
 
 const TeamMembers = () => {
   return (
     <div>
       <Header />
-      TeamMembers
+      <ContactUs />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const TypeIntroduction = () => {
   return (
     <div>
       <Header />
-      <TitleHeader title="성격 유형" />
+      <TitleHeader title="성격 유형" src={AnalystBottomLine} />
       {TYPE_ARRAY.map(data => {
         return (
           <TypeContainer
@@ -33,14 +33,14 @@ const TYPE_ARRAY = [
     themeColor: '#E2E9FF',
     typeText: '분석가형',
     type: 'Analyst',
-    bottomLine: AnalystBottomLine,
+    bottomLine: DiplomatBottomLine,
   },
   {
     id: 1,
     themeColor: '#D5FFDB',
     typeText: '외교관형',
     type: 'Diplomat',
-    bottomLine: DiplomatBottomLine,
+    bottomLine: ManagerBottomLine,
   },
   {
     id: 1,
@@ -54,7 +54,7 @@ const TYPE_ARRAY = [
     themeColor: '#FFF7B1',
     typeText: '탐험가형',
     type: 'Explorer',
-    bottomLine: ManagerBottomLine,
+    bottomLine: ExplorerBottomLine,
   },
 ];
 

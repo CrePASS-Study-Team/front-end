@@ -28,7 +28,7 @@ const TypeContainer = (props: TypeContainerProps) => {
 const TypeContents = styled.div`
   position: relative;
   width: 100%;
-  height: 800px;
+  height: 850px;
   text-align: center;
   color: white;
   font-size: 12rem;
@@ -43,17 +43,17 @@ const TypeTitle = styled.div`
 
 const TypeInfoConatiner = styled.div`
   position: absolute;
-  top: 25%;
+  top: 17%;
   display: flex;
   justify-content: space-between;
   padding: 0 100px;
   width: 100%;
-  border: 1px solid black;
 `;
 
 const TypeBottomLine = styled.img`
   ${({ theme }) => theme.common.bottomImage}
-  top : 0;
+  width : 100%;
+  bottom: 0;
   left: 0;
 `;
 

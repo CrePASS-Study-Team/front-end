@@ -8,7 +8,7 @@ const Main = () => {
       <Header />
       <MainContainer>
         <TitleContainer>
-          <MainTitle>CHAT GPT 로 확인하는 나의 MBTI 는?</MainTitle>
+          <MainTitle>CHATGPT 로 확인하는 나의 MBTI 는?</MainTitle>
           <SubTitle>
             쉽고 간단하면서도 정확한 성격 유형 검사를 통해 당신이 누구이며, <br />왜 그러한 특정
             행동 성향을 보이는지 확인하십시오.

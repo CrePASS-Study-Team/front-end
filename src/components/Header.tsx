@@ -27,8 +27,10 @@ const Wrapper = styled.div`
   position: relative;
   background-color: white;
   width: 100%;
+  height: 15vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const LogoContainer = styled.div`
