@@ -11,6 +11,7 @@ interface MapDataType {
   name: string;
   class: string;
   info: string;
+  src: string;
 }
 
 const Types = (props: TypesProps) => {
@@ -20,7 +21,7 @@ const Types = (props: TypesProps) => {
       {TYPE_INFOMATION_OBJECT[type].map((data: MapDataType) => {
         return (
           <TypeInfo key={data.id}>
-            <TypeImage />
+            <TypeImage src={data.src} alt={data.name} />
             <TypeName>{data.name}</TypeName>
             <ClassName>{data.class}</ClassName>
             <TypeIntroduce>{data.info}</TypeIntroduce>
@@ -38,10 +39,10 @@ const TypeInfo = styled.div`
   height: 600px;
 `;
 
-const TypeImage = styled.div`
+const TypeImage = styled.img`
   width: 300px;
   height: 300px;
-  background-color: rgba(60, 60, 60, 0.22);
+  z-index: 99;
 `;
 
 const TypeName = styled.div`
@@ -61,6 +62,7 @@ const TypeIntroduce = styled.div`
   padding-top: 1rem;
   font-size: 1rem;
   color: black;
+  opacity: 0.7;
 `;
 
 export default Types;

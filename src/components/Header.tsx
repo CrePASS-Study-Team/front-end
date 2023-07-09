@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   position: relative;
   background-color: white;
   width: 100%;
-  height: 15vh;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,13 +39,21 @@ const LogoContainer = styled.div`
 
 const Logo = styled.img`
   width: 45%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const NaviContainer = styled.div`
   display: flex;
+  height: 100%;
 `;
 
 const Contents = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   color: gray;
   font-weight: 700;
   font-size: 1.5rem;
@@ -54,7 +62,7 @@ const Contents = styled.div`
   cursor: pointer;
 
   &:hover {
-    font-size: 2rem;
+    border-top: 5px solid #ffc061;
   }
 `;
 
@@ -66,6 +74,7 @@ const LanguageContents = styled(Contents)`
 const BottomImage = styled.img`
   ${({ theme }) => theme.common.bottomImage}
   bottom : 0;
+  width: 100%;
 `;
 
 export default Header;
