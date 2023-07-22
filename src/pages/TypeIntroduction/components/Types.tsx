@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TYPE_INFOMATION_OBJECT } from './TYPE_INFORMATION_OBJECT';
+import somdangGIF from '../../../assets/mbti/somdang.gif';
 
 interface TypesProps {
   type: string;
@@ -16,12 +17,21 @@ interface MapDataType {
 
 const Types = (props: TypesProps) => {
   const { type } = props;
+
+  const srcHandle = (name: string, data: MapDataType) => {
+    if (name === '전략가') {
+      return somdangGIF;
+    } else {
+      return data.src;
+    }
+  };
+
   return (
     <>
       {TYPE_INFOMATION_OBJECT[type].map((data: MapDataType) => {
         return (
           <TypeInfo key={data.id}>
-            <TypeImage src={data.src} alt={data.name} />
+            <TypeImage src={srcHandle(data.name, data)} alt={data.name} />
             <TypeName>{data.name}</TypeName>
             <ClassName>{data.class}</ClassName>
             <TypeIntroduce>{data.info}</TypeIntroduce>

@@ -13,7 +13,7 @@ const ContactUs = () => {
           있겠습니다. 현재 영어로 작성된 이메일에 한해서만 답변이 가능합니다. 이 점 많은 양해
           부탁드립니다.
         </ContactText>
-        <ContactInfo>CTS@crepass.com</ContactInfo>
+        <ContactInfo>CST@crepass.com</ContactInfo>
         <ContactInfo>크레파스솔루션</ContactInfo>
         <ContactInfo>서울특별시 종로구 종로1길 42 이마빌딩 12층</ContactInfo>
       </ContactContents>
