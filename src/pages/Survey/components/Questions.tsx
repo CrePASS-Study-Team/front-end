@@ -31,6 +31,10 @@ type SelectOptionStyledProps = {
   onClick: () => void;
 };
 
+type WrapperStyledProps = {
+  userSelectAnswer: boolean;
+};
+
 const Questions = (props: QuestionsProps) => {
   const { title, questionId } = props;
 
@@ -43,11 +47,11 @@ const Questions = (props: QuestionsProps) => {
   };
 
   useEffect(() => {
-    console.log(userAnswer);
+    console.log(userAnswer.answer > 0);
   }, [userAnswer]);
 
   return (
-    <Wrapper>
+    <Wrapper userSelectAnswer={userAnswer.answer > 0}>
       <Title>{title}</Title>
       <SelectOptionContents>
         <TextContents>동의</TextContents>
@@ -72,10 +76,14 @@ const Questions = (props: QuestionsProps) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<WrapperStyledProps>`
   width: 80%;
   height: 156px;
   margin-bottom: 156px;
+
+  opacity: ${props => (props.userSelectAnswer ? 0.3 : 1.0)};
+
+  transition: all 0.3s;
 `;
 
 const Title = styled.div`
