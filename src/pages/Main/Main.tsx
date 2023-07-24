@@ -1,11 +1,13 @@
 import React from 'react';
 import Header from '../../components/Header';
 import styled from 'styled-components';
+import HeaderTopLine from '../../assets/HeaderBottomLine.png';
 
 const Main = () => {
   return (
     <Wrapper>
       <Header />
+      <TopImage src={HeaderTopLine} alt="bottomLine" />
       <MainContainer>
         <TitleContainer>
           <MainTitle>CHATGPT 로 확인하는 나의 MBTI 는?</MainTitle>
@@ -27,8 +29,14 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+const TopImage = styled.img`
+  width: 100%;
+  margin-bottom: -5px;
+`;
+
 const MainContainer = styled.div`
   color: white;
+  background-color: #ffc061;
   display: flex;
   justify-content: center;
   align-items: center;

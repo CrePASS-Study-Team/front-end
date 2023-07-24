@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import ContactBottomLine from '../../../assets/ContactBottomLine.png';
+import ContactBottomLine from '../../../assets/teamMembersBottom.png';
 
 const ContactUs = () => {
   return (
@@ -17,7 +17,7 @@ const ContactUs = () => {
         <ContactInfo>크레파스솔루션</ContactInfo>
         <ContactInfo>서울특별시 종로구 종로1길 42 이마빌딩 12층</ContactInfo>
       </ContactContents>
-      {/* <BottomLine src={ContactBottomLine} alt="bottomline" /> */}
+      <BottomLine src={ContactBottomLine} alt="bottomline" />
     </ContactContainer>
   );
 };
@@ -25,9 +25,9 @@ const ContactUs = () => {
 const ContactContainer = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-top: 10rem;
   width: 100vw;
 `;
 
@@ -35,33 +35,34 @@ const ContactContents = styled.div`
   display: flex;
   text-align: left;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
+  padding: 90px 15% 150px 15%;
+
+  background-color: #ff6187;
 `;
 
 const ContactTitle = styled.div`
-  font-size: 5rem;
+  font-size: 63px;
   font-weight: 900;
   color: #ffffff;
 `;
 
 const ContactText = styled.div`
   margin-top: 5rem;
-  font-size: 3rem;
+  font-size: 22px;
   font-weight: 900;
   color: #ffffff;
 `;
 
 const ContactInfo = styled.div`
   margin-top: 3rem;
-  font-size: 3rem;
+  font-size: 22px;
   font-weight: 700;
   color: #ffffff;
 `;
 
-// const BottomLine = styled.img`
-//   position: absolute;
-//   bottom: 0;
-//   width: 100%;
-// `;
+const BottomLine = styled.img`
+  width: 100%;
+`;
 
 export default ContactUs;

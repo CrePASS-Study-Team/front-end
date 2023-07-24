@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/CRT_logo.png';
-import HeaderBottomLine from '../assets/HeaderBottomLine.png';
 
 const Header = () => {
   const naviagte = useNavigate();
@@ -15,10 +14,9 @@ const Header = () => {
       <NaviContainer>
         <Contents onClick={() => naviagte('/survey')}>성격 유형 검사</Contents>
         <Contents onClick={() => naviagte('/typeintroduction')}>성격 유형 </Contents>
-        <Contents onClick={() => naviagte('/teammembers')}>Teams</Contents>
+        <Contents onClick={() => naviagte('/teammembers')}>문의</Contents>
       </NaviContainer>
       <LanguageContents>언어</LanguageContents>
-      <BottomImage src={HeaderBottomLine} alt="bottomLine" />
     </Wrapper>
   );
 };
@@ -27,7 +25,7 @@ const Wrapper = styled.div`
   position: relative;
   background-color: white;
   width: 100%;
-  height: 150px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,12 +67,6 @@ const Contents = styled.div`
 const LanguageContents = styled(Contents)`
   padding: 2rem;
   font-weight: 500;
-`;
-
-const BottomImage = styled.img`
-  ${({ theme }) => theme.common.bottomImage}
-  bottom : 0;
-  width: 100%;
 `;
 
 export default Header;

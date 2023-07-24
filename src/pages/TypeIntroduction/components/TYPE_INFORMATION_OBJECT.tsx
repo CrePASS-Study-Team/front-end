@@ -57,7 +57,7 @@ export const TYPE_INFOMATION_OBJECT: TypeInformation = {
     },
     {
       id: 4,
-      name: '전략가',
+      name: '변론가',
       class: 'ENTP-A / ENTP-T',
       info: '지적 도전을 즐기는 영리하고 호기심이 많은 사색가입니다.',
       src: ENTP,

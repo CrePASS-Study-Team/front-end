@@ -11,7 +11,7 @@ const TypeIntroduction = () => {
   return (
     <div>
       <Header />
-      <TitleHeader title="성격 유형" src={AnalystBottomLine} />
+      <TitleHeader title="성격 유형" src={AnalystBottomLine} fontColor="black" />
       {TYPE_ARRAY.map(data => {
         return (
           <TypeContainer

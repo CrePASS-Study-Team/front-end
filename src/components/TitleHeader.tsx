@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TitleHeader = ({ title, src }: any) => {
+const TitleHeader = ({ title, src, fontColor }: any) => {
   return (
-    <ContentsHeader>
+    <ContentsHeader color={fontColor}>
       {title}
       {src && <BottomLine src={src} alt="bottomLine" />}
     </ContentsHeader>
@@ -16,12 +16,11 @@ const ContentsHeader = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
   width: 100%;
   height: 30vh;
-  color: white;
-  font-size: 6rem;
+  font-size: 78px;
   font-weight: 700;
+  margin-top: 90px;
 `;
 
 const BottomLine = styled.img`

@@ -11,7 +11,6 @@ const ContentsHeader = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
   width: 100%;
   height: 30vh;
   color: white;
