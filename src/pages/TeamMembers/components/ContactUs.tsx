@@ -26,9 +26,10 @@ const ContactContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
   width: 100vw;
+  height: 91vh;
+  background-color: #fff3d6;
 `;
 
 const ContactContents = styled.div`

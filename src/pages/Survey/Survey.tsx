@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
-import surveyBottom from '../../assets/surveyBottom.png';
+import surveyBottom from '../../assets/surveyTitleBottom.png';
 import SurveyHeader from './components/SurveyHeader';
 import SurveyContents from './components/SurveyContents';
+import SurveyInfo from './components/SurveyInfo';
 import axios from 'axios';
 
 const Survey = () => {
   const [surveyData, setSurveyData] = useState(null);
+
+  const surveyScrollRef = useRef<any>(null);
 
   useEffect(() => {
     const SurveyDataHandle = async () => {
@@ -23,27 +26,24 @@ const Survey = () => {
   }, []);
 
   return (
-    <div>
+    <div ref={surveyScrollRef}>
       <Header />
       <SurveyHeader />
       <TitleHeaderBottom>
         <img src={surveyBottom} alt="surveyBottom" />
         <SurveyIntroContents>
-          <SurveyIntro>
-            <SurveyIntroImage />
-            <SurveyIntroText>총 검사 시간은 12분 내외입니다.</SurveyIntroText>
-          </SurveyIntro>
-          <SurveyIntro>
-            <SurveyIntroImage />
-            <SurveyIntroText>총 검사 시간은 12분 내외입니다.</SurveyIntroText>
-          </SurveyIntro>
-          <SurveyIntro>
-            <SurveyIntroImage />
-            <SurveyIntroText>총 검사 시간은 12분 내외입니다.</SurveyIntroText>
-          </SurveyIntro>
+          <SurveyInfo backgroundColor="#FCFFD7" title="총 검사 시간은 12분 내외입니다." />
+          <SurveyInfo
+            backgroundColor="#C0E1FF"
+            title="혹 질문이 마음에 들지 않더라도 정직하게 답변하십시오."
+          />
+          <SurveyInfo
+            backgroundColor="#FBE4FF"
+            title="가능하면 답변 시 '중립'을 선택하지 마십시오."
+          />
         </SurveyIntroContents>
       </TitleHeaderBottom>
-      {surveyData && <SurveyContents surveyData={surveyData} />}
+      {surveyData && <SurveyContents surveyData={surveyData} surveyScrollRef={surveyScrollRef} />}
     </div>
   );
 };
@@ -53,54 +53,26 @@ const TitleHeaderBottom = styled.div`
 
   width: 100%;
   height: 400px;
-  background-color: white;
+  background-color: #009556;
 
   img {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     height: 70%;
+
+    z-index: 10;
   }
 `;
 
 const SurveyIntroContents = styled.div`
   position: absolute;
-  top: 30%;
+  top: 10%;
   width: 100%;
   height: 70%;
 
   display: flex;
   justify-content: center;
-`;
-
-const SurveyIntro = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 350px;
-  height: 255px;
-
-  border-radius: 8px;
-  background-color: white;
-  margin-right: 30px;
-`;
-
-const SurveyIntroImage = styled.div`
-  width: 90px;
-  height: 90px;
-  background-color: red;
-
-  margin: 25px 0;
-`;
-
-const SurveyIntroText = styled.div`
-  margin-top: 10%;
-
-  width: 70%;
-
-  text-align: center;
-
-  font-size: 17px;
-  font-weight: 700;
 `;
 
 export default Survey;

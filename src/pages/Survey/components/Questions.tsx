@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import surveyF1 from '../../../assets/survey/surveyF1.png';
 import surveyF2 from '../../../assets/survey/surveyF2.png';
@@ -37,21 +37,24 @@ type WrapperStyledProps = {
 
 const Questions = (props: QuestionsProps) => {
   const { title, questionId } = props;
+  const questionRef = useRef<HTMLDivElement>(null); // ref 생성
 
   const [userAnswer, setUserAnswer] = useState<UserInputProps>({ id: questionId, answer: 0 });
 
   const onClickHandle = (option: number) => {
-    console.log(questionId, option);
-
     setUserAnswer({ ...userAnswer, answer: option });
   };
 
   useEffect(() => {
-    console.log(userAnswer.answer > 0);
+    if (userAnswer.answer > 0) {
+      if (questionRef && questionRef.current) {
+        questionRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }, [userAnswer]);
 
   return (
-    <Wrapper userSelectAnswer={userAnswer.answer > 0}>
+    <Wrapper userSelectAnswer={userAnswer.answer > 0} ref={questionRef}>
       <Title>{title}</Title>
       <SelectOptionContents>
         <TextContents>동의</TextContents>
@@ -60,6 +63,7 @@ const Questions = (props: QuestionsProps) => {
 
           return (
             <SelectOption
+              key={id}
               src={src}
               alt={alt}
               isSelect={id === userAnswer.answer}
