@@ -16,7 +16,7 @@ const Survey = () => {
     const SurveyDataHandle = async () => {
       try {
         const response = await axios.get('/mockData/survey.json');
-
+        // const response = await axios.get('http://mbti.crepassplus.com/api/create');
         setSurveyData(response.data.data);
       } catch (error) {
         console.log(error);

@@ -4,7 +4,7 @@ import ContactBottomLine from '../../../assets/teamMembersBottom.png';
 
 const ContactUs = () => {
   return (
-    <ContactContainer>
+    <div>
       <ContactContents>
         <ContactTitle>문의</ContactTitle>
         <ContactText>
@@ -18,19 +18,9 @@ const ContactUs = () => {
         <ContactInfo>서울특별시 종로구 종로1길 42 이마빌딩 12층</ContactInfo>
       </ContactContents>
       <BottomLine src={ContactBottomLine} alt="bottomline" />
-    </ContactContainer>
+    </div>
   );
 };
-
-const ContactContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100vw;
-  height: 91vh;
-  background-color: #fff3d6;
-`;
 
 const ContactContents = styled.div`
   display: flex;
