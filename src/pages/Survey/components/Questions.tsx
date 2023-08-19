@@ -7,6 +7,13 @@ import surveyF4 from '../../../assets/survey/surveyF4.png';
 import surveyF5 from '../../../assets/survey/surveyF5.png';
 import surveyF6 from '../../../assets/survey/surveyF6.png';
 import surveyF7 from '../../../assets/survey/surveyF7.png';
+import surveyT1 from '../../../assets/survey/surveyT1.png';
+import surveyT2 from '../../../assets/survey/surveyT2.png';
+import surveyT3 from '../../../assets/survey/surveyT3.png';
+import surveyT4 from '../../../assets/survey/surveyT4.png';
+import surveyT5 from '../../../assets/survey/surveyT5.png';
+import surveyT6 from '../../../assets/survey/surveyT6.png';
+import surveyT7 from '../../../assets/survey/surveyT7.png';
 
 interface QuestionsProps {
   title: string;
@@ -17,19 +24,13 @@ interface SelectOptionProps {
   id: number;
   src: string;
   alt: string;
+  selectedSrc: string;
 }
 
 interface UserInputProps {
   id: number;
   answer: number;
 }
-
-type SelectOptionStyledProps = {
-  src: string;
-  alt: string;
-  isSelect: boolean;
-  onClick: () => void;
-};
 
 type WrapperStyledProps = {
   userSelectAnswer: boolean;
@@ -59,18 +60,30 @@ const Questions = (props: QuestionsProps) => {
       <SelectOptionContents>
         <TextContents>동의</TextContents>
         {SELECT_OPTION_DATA.map((data: SelectOptionProps) => {
-          const { id, src, alt } = data;
+          const { id, src, alt, selectedSrc } = data;
 
           return (
-            <SelectOption
-              key={id}
-              src={src}
-              alt={alt}
-              isSelect={id === userAnswer.answer}
-              onClick={() => {
-                onClickHandle(id);
-              }}
-            />
+            <>
+              {id === userAnswer.answer ? (
+                <SelectOption
+                  key={id}
+                  src={selectedSrc}
+                  alt={alt}
+                  onClick={() => {
+                    onClickHandle(id);
+                  }}
+                />
+              ) : (
+                <SelectOption
+                  key={id}
+                  src={src}
+                  alt={alt}
+                  onClick={() => {
+                    onClickHandle(id);
+                  }}
+                />
+              )}
+            </>
           );
         })}
 
@@ -109,10 +122,8 @@ const SelectOptionContents = styled.div`
 
 const TextContents = styled.div``;
 
-const SelectOption = styled.img<SelectOptionStyledProps>`
+const SelectOption = styled.img`
   margin: 0 26px;
-
-  border: ${props => (props.isSelect ? '1px solid black' : '1px solid seperate')};
 
   &:hover {
     cursor: pointer;
@@ -124,36 +135,43 @@ const SELECT_OPTION_DATA = [
     id: 1,
     src: surveyF1,
     alt: 'surveyF1',
+    selectedSrc: surveyT1,
   },
   {
     id: 2,
     src: surveyF2,
     alt: 'surveyF2',
+    selectedSrc: surveyT2,
   },
   {
     id: 3,
     src: surveyF3,
     alt: 'surveyF3',
+    selectedSrc: surveyT3,
   },
   {
     id: 4,
     src: surveyF4,
     alt: 'surveyF4',
+    selectedSrc: surveyT4,
   },
   {
     id: 5,
     src: surveyF5,
     alt: 'surveyF5',
+    selectedSrc: surveyT5,
   },
   {
     id: 6,
     src: surveyF6,
     alt: 'surveyF6',
+    selectedSrc: surveyT6,
   },
   {
     id: 7,
     src: surveyF7,
     alt: 'surveyF7',
+    selectedSrc: surveyT7,
   },
 ];
 
