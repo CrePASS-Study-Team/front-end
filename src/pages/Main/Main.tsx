@@ -1,9 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import styled from 'styled-components';
 import HeaderTopLine from '../../assets/HeaderBottomLine.png';
+import mainImage from '../../assets/main.png';
 
 const Main = () => {
+  const navigate = useNavigate();
+
+  const onClickSurveyButton = () => {
+    navigate('/survey');
+  };
+
   return (
     <Wrapper>
       <Header />
@@ -17,7 +25,8 @@ const Main = () => {
           </SubTitle>
         </TitleContainer>
         <ButtonContainer>
-          <Button>검사 실시 {'->'} </Button>
+          <Button onClick={onClickSurveyButton}>검사 실시 {'->'} </Button>
+          <MainImage style={{ backgroundImage: `url(${mainImage})` }} />
         </ButtonContainer>
       </MainContainer>
     </Wrapper>
@@ -32,6 +41,14 @@ const Wrapper = styled.div`
 const TopImage = styled.img`
   width: 100%;
   margin-bottom: -5px;
+`;
+
+const MainImage = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-size: cover;
 `;
 
 const MainContainer = styled.div`
@@ -81,8 +98,7 @@ const Button = styled.button`
   transition: 0.2s;
 
   &:hover {
-    width: 22rem;
-    height: 6rem;
+    transform: scale(1.1); // 원래 크기의 1.1배로 확대
   }
 `;
 

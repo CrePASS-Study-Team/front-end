@@ -16,8 +16,11 @@ import surveyT6 from '../../../assets/survey/surveyT6.png';
 import surveyT7 from '../../../assets/survey/surveyT7.png';
 
 interface QuestionsProps {
-  title: string;
+  question: string;
   questionId: number;
+  userSelectArray: any[];
+  setUserSelectArray: React.Dispatch<React.SetStateAction<any[]>>;
+  surveyId: string;
 }
 
 interface SelectOptionProps {
@@ -37,13 +40,26 @@ type WrapperStyledProps = {
 };
 
 const Questions = (props: QuestionsProps) => {
-  const { title, questionId } = props;
+  const { question, questionId, userSelectArray, setUserSelectArray } = props;
   const questionRef = useRef<HTMLDivElement>(null); // ref 생성
 
   const [userAnswer, setUserAnswer] = useState<UserInputProps>({ id: questionId, answer: 0 });
 
   const onClickHandle = (option: number) => {
-    setUserAnswer({ ...userAnswer, answer: option });
+    const options = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+    if (option >= 1 && option <= 7) {
+      const updatedArray = userSelectArray.map(item => {
+        if (item.id === questionId) {
+          return { ...item, answer: options[option - 1] };
+        }
+        return item;
+      });
+      setUserAnswer({ ...userAnswer, answer: option });
+      setUserSelectArray(updatedArray);
+    } else {
+      console.error('Invalid option provided');
+    }
   };
 
   useEffect(() => {
@@ -54,9 +70,11 @@ const Questions = (props: QuestionsProps) => {
     }
   }, [userAnswer]);
 
+  console.log(userSelectArray);
+
   return (
     <Wrapper userSelectAnswer={userAnswer.answer > 0} ref={questionRef}>
-      <Title>{title}</Title>
+      <Title>{question}</Title>
       <SelectOptionContents>
         <TextContents>동의</TextContents>
         {SELECT_OPTION_DATA.map((data: SelectOptionProps) => {

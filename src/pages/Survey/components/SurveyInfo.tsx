@@ -4,6 +4,7 @@ import styled from 'styled-components';
 interface SurveyInfoProps {
   backgroundColor: string;
   title: string;
+  src: string;
 }
 
 type WrapperStyledProps = {
@@ -11,11 +12,11 @@ type WrapperStyledProps = {
 };
 
 const SurveyInfo = (props: SurveyInfoProps) => {
-  const { backgroundColor, title } = props;
+  const { backgroundColor, title, src } = props;
 
   return (
     <Wrapper backgroundColor={backgroundColor}>
-      <SurveyIntroImage />
+      <SurveyIntroImage src={src} alt="info" />
       <SurveyIntroText>{title}</SurveyIntroText>
     </Wrapper>
   );
@@ -34,10 +35,9 @@ const Wrapper = styled.div<WrapperStyledProps>`
   margin-right: 30px;
 `;
 
-const SurveyIntroImage = styled.div`
+const SurveyIntroImage = styled.img`
   width: 90px;
   height: 90px;
-  background-color: red;
   margin: 25px 0;
 
   z-index: 11;
