@@ -81,7 +81,7 @@ const Survey = () => {
         <SurveyIntroContents>
           <SurveyInfo
             backgroundColor="#FCFFD7"
-            title="총 검사 시간은 12분 내외입니다."
+            title="총 검사 시간은 12분 내외 입니다."
             src={info1}
           />
           <SurveyInfo

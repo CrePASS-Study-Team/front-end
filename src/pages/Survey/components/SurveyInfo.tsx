@@ -49,6 +49,7 @@ const SurveyIntroText = styled.div`
   width: 70%;
 
   text-align: center;
+  word-break: keep-all;
 
   font-size: 17px;
   font-weight: 700;
