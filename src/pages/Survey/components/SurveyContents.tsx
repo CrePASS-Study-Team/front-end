@@ -29,6 +29,8 @@ const SurveyContents = ({ surveyData }: any) => {
   }, [survey]);
 
   const postUserAnswerHandle = async () => {
+    console.log(userSelectArray);
+
     try {
       const data = {
         unique_id: unique_id,
@@ -48,16 +50,6 @@ const SurveyContents = ({ surveyData }: any) => {
     }
   };
 
-  useEffect(() => {
-    userSelectArray.map((data, index) => {
-      if (data.answer.length > 0) {
-        if (index + 1 === length) {
-          postUserAnswerHandle();
-        }
-      }
-    });
-  }, [userSelectArray]);
-
   return (
     <>
       {userSelectArray.length === length && (
@@ -74,6 +66,7 @@ const SurveyContents = ({ surveyData }: any) => {
               />
             );
           })}
+          <Button onClick={() => postUserAnswerHandle()}>제출</Button>
         </Wrapper>
       )}
     </>
@@ -89,6 +82,25 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
+`;
+
+const Button = styled.button`
+  background-color: #095ea5;
+
+  margin-bottom: 5rem;
+  width: 20rem;
+  height: 5rem;
+  border-radius: 4rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.1); // 원래 크기의 1.1배로 확대
+  }
 `;
 
 export default SurveyContents;

@@ -12,8 +12,18 @@ import info1 from '../../assets/survey/info1.png';
 import info2 from '../../assets/survey/info2.png';
 import info3 from '../../assets/survey/info3.png';
 
+interface SurveyData {
+  unique_id: string;
+  length: number;
+  survey: any;
+}
+
 const Survey = () => {
-  const [surveyData, setSurveyData] = useState(null);
+  const [surveyData, setSurveyData] = useState<SurveyData>({
+    length: 0,
+    unique_id: '',
+    survey: null,
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const surveyScrollRef = useRef<any>(null);
@@ -33,7 +43,12 @@ const Survey = () => {
 
         if (response.data.code === 200) {
           setIsLoading(false);
-          setSurveyData(response.data.data);
+          const jsonObject = await JSON.parse(response.data.data.survey);
+          setSurveyData({
+            unique_id: response.data.data.unique_id,
+            length: response.data.data.length,
+            survey: jsonObject,
+          });
         } else {
           // 재시도 로직
           if (retries < MAX_RETRIES) {
@@ -45,31 +60,26 @@ const Survey = () => {
         }
       } catch (error) {
         console.log(error);
-        if (retries < MAX_RETRIES) {
-          retries++;
-          setTimeout(SurveyDataHandle, 2000); // 2초 대기 후 재시도
-        } else {
-          setIsLoading(false);
-        }
+        setIsLoading(false);
       }
     };
 
     SurveyDataHandle();
   }, []);
 
-  useEffect(() => {
-    const navGetDataHandle = async () => {
-      try {
-        const response = await axios.post('http://mbti.crepassplus.com/api/navigation');
+  // useEffect(() => {
+  //   const navGetDataHandle = async () => {
+  //     try {
+  //       const response = await axios.post('http://mbti.crepassplus.com/api/navigation');
 
-        console.log(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  //       console.log(response.data.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    navGetDataHandle();
-  }, []);
+  //   navGetDataHandle();
+  // }, []);
 
   return (
     <div ref={surveyScrollRef}>
@@ -96,7 +106,9 @@ const Survey = () => {
           />
         </SurveyIntroContents>
       </TitleHeaderBottom>
-      {surveyData && <SurveyContents surveyData={surveyData} surveyScrollRef={surveyScrollRef} />}
+      {surveyData.survey && (
+        <SurveyContents surveyData={surveyData} surveyScrollRef={surveyScrollRef} />
+      )}
     </div>
   );
 };
