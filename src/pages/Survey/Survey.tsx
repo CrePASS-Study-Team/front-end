@@ -28,58 +28,42 @@ const Survey = () => {
 
   const surveyScrollRef = useRef<any>(null);
 
-  const instance = axios.create({
-    timeout: 300000, // 60초
-  });
+  const SurveyDataHandle = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.post('http://mbti.crepassplus.com/api/survey/create');
+      if (response.data.code === 200) {
+        setIsLoading(false);
+        const jsonObject = await JSON.parse(response.data.data.survey);
+        setSurveyData({
+          unique_id: response.data.data.unique_id,
+          length: response.data.data.length,
+          survey: jsonObject,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const MAX_RETRIES = 3;
-    let retries = 0;
-
-    const SurveyDataHandle = async () => {
-      try {
-        setIsLoading(true);
-        const response = await instance.post('http://mbti.crepassplus.com/api/survey/create');
-
-        if (response.data.code === 200) {
-          setIsLoading(false);
-          const jsonObject = await JSON.parse(response.data.data.survey);
-          setSurveyData({
-            unique_id: response.data.data.unique_id,
-            length: response.data.data.length,
-            survey: jsonObject,
-          });
-        } else {
-          // 재시도 로직
-          if (retries < MAX_RETRIES) {
-            retries++;
-            setTimeout(SurveyDataHandle, 2000); // 2초 대기 후 재시도
-          } else {
-            setIsLoading(false);
-          }
-        }
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
-
     SurveyDataHandle();
   }, []);
 
-  // useEffect(() => {
-  //   const navGetDataHandle = async () => {
-  //     try {
-  //       const response = await axios.post('http://mbti.crepassplus.com/api/navigation');
+  useEffect(() => {
+    const navGetDataHandle = async () => {
+      try {
+        const response = await axios.post('http://mbti.crepassplus.com/api/navigation');
 
-  //       console.log(response.data.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+        console.log(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   navGetDataHandle();
-  // }, []);
+    navGetDataHandle();
+  }, []);
 
   return (
     <div ref={surveyScrollRef}>

@@ -1,8 +1,9 @@
 {
   "code": 200,
   "message": "Success",
+  "length": 20,
   "unique_id": "",
-  "data": [
+  "survey": [
     {
       "id": 1,
       "title": "주기적으로 새로운 친구를 만든다."

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import styled from 'styled-components';
@@ -7,33 +6,30 @@ import styled from 'styled-components';
 import Graph from './Graph';
 import Mbti from './Mbti';
 
+import { MBTI_BACKGROUND_OBJECT } from './MBTI_INFO';
+
+interface WrapperBgProps {
+  bg: string;
+}
+
 // import { TYPE_INFOMATION_OBJECT } from '../Result/MBTI_INFO';
 
 const Result = () => {
-  const params = useParams();
-  const navigate = useNavigate();
-  const { mbti } = params;
-
-  if (!mbti) {
-    navigate('/notfound');
-  }
-
-  const mbtiUpper = mbti ? mbti.toUpperCase() : '';
+  const mbti = 'INTJ';
 
   return (
     <>
       <Header />
-
-      <Wrapper>
+      <Wrapper bg={MBTI_BACKGROUND_OBJECT[mbti]}>
         <Graph />
-        <Mbti mbtiKey={mbtiUpper} />
+        <Mbti mbtiKey={mbti} />
       </Wrapper>
     </>
   );
 };
 
-const Wrapper = styled.div`
-  background-color: #d4d4d4;
+const Wrapper = styled.div<WrapperBgProps>`
+  background-color: ${props => props.bg};
 
   display: flex;
   justify-content: center;

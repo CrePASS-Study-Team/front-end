@@ -85,8 +85,6 @@ const Graph = () => {
   return (
     <BarWraper>
       <Title>결과</Title>
-      <ContextTopBG />
-      <ContentBottomBG />
       <BarContenst>
         {BAR_COLOR_ARRAY.map((data: BarColorArrayType) => (
           <Bar
@@ -107,6 +105,7 @@ const BarWraper = styled.div`
   width: 878px;
   height: 800px;
 
+  background-color: white;
   border-radius: 15px;
 
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
@@ -132,35 +131,6 @@ const BarContenst = styled.div`
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-`;
-
-const ContextTopBG = styled.div`
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: 50%;
-
-  border-top-left-radius: 15px;
-  background-color: #f2f2f2;
-
-  z-index: 1;
-`;
-
-const ContentBottomBG = styled.div`
-  position: absolute;
-
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  height: 50%;
-  border-bottom-left-radius: 15px;
-  background-color: white;
-
-  z-index: 1;
 `;
 
 export default Graph;

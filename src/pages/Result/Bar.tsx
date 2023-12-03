@@ -18,6 +18,10 @@ interface BarColorProps {
   bg: string;
 }
 
+interface TextColorProps {
+  fontColor: string;
+}
+
 const Bar = (props: BarProps) => {
   const { data, leftPercent, rightPercent } = props;
 
@@ -31,13 +35,13 @@ const Bar = (props: BarProps) => {
   return (
     <BarWraper>
       <BarBox>
-        <SpecificText>
+        <SpecificText fontColor={data.color}>
           <SpecificMbti>{data.leftText}</SpecificMbti>
           <MbtiPercent>{leftPercent}</MbtiPercent>
         </SpecificText>
         <BarLeft bg={colorHandle()!.leftColor} />
         <BarRight bg={colorHandle()!.rightColor} />
-        <SpecificTextRight>
+        <SpecificTextRight fontColor={data.color}>
           <SpecificMbti>{data.rightText}</SpecificMbti>
           <MbtiPercent>{rightPercent}</MbtiPercent>
         </SpecificTextRight>
@@ -46,12 +50,16 @@ const Bar = (props: BarProps) => {
   );
 };
 
-const SpecificText = styled.div`
+const SpecificText = styled.div<TextColorProps>`
   margin-right: 10px;
+
+  color: ${props => props.fontColor};
 `;
 
-const SpecificTextRight = styled.div`
+const SpecificTextRight = styled.div<TextColorProps>`
   margin-left: 10px;
+
+  color: ${props => props.fontColor};
 `;
 
 const SpecificMbti = styled.div`

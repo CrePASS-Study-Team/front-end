@@ -146,3 +146,42 @@ export const TYPE_INFOMATION_OBJECT: TypeInformation = {
     src: ESFP,
   },
 };
+
+interface MbtiBgType {
+  INTJ: string;
+  INTP: string;
+  ENTJ: string;
+  ENTP: string;
+  INFJ: string;
+  INFP: string;
+  ENFJ: string;
+  ENFP: string;
+  ISTJ: string;
+  ISFJ: string;
+  ESTJ: string;
+  ESFJ: string;
+  ISTP: string;
+  ISFP: string;
+  ESTP: string;
+  ESFP: string;
+  [key: string]: string;
+}
+
+export const MBTI_BACKGROUND_OBJECT: MbtiBgType = {
+  INTJ: '#E2E9FF',
+  INTP: '#E2E9FF',
+  ENTJ: '#E2E9FF',
+  ENTP: '#E2E9FF',
+  INFJ: '#D4FFDB',
+  INFP: '#D4FFDB',
+  ENFJ: '#D4FFDB',
+  ENFP: '#D4FFDB',
+  ISTJ: '#CEFFFF',
+  ISFJ: '#CEFFFF',
+  ESTJ: '#CEFFFF',
+  ESFJ: '#CEFFFF',
+  ISTP: '#FFF7B1',
+  ISFP: '#FFF7B1',
+  ESTP: '#FFF7B1',
+  ESFP: '#FFF7B1',
+};
