@@ -37,7 +37,8 @@ const SurveyContents = ({ surveyData }: any) => {
         answer: userSelectArray,
       };
 
-      const response = await axios.post('/response', data);
+      const response = await axios.post('https://mbti.crepassplus.com/api/survey/answers', data);
+      // const response = await axios.post('http://3.35.152.198:8000/api/survey/answers', data);
 
       if (response.data.code) {
         console.log(response.data);

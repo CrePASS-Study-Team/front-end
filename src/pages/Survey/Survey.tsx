@@ -31,15 +31,10 @@ const Survey = () => {
   const SurveyDataHandle = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.post('http://mbti.crepassplus.com/api/survey/create');
+      const response = await axios.post('https://mbti.crepassplus.com/api/survey/create');
       if (response.data.code === 200) {
+        setSurveyData(response.data.data);
         setIsLoading(false);
-        const jsonObject = await JSON.parse(response.data.data.survey);
-        setSurveyData({
-          unique_id: response.data.data.unique_id,
-          length: response.data.data.length,
-          survey: jsonObject,
-        });
       }
     } catch (error) {
       console.log(error);
@@ -54,7 +49,7 @@ const Survey = () => {
   useEffect(() => {
     const navGetDataHandle = async () => {
       try {
-        const response = await axios.post('http://mbti.crepassplus.com/api/navigation');
+        const response = await axios.post('https://mbti.crepassplus.com/api/navigation');
 
         console.log(response.data.data);
       } catch (error) {
