@@ -6,11 +6,13 @@ import Members from './components/Members';
 
 const TeamMembers = () => {
   return (
-    <TeamMembersWrapper>
+    <div>
       <Header />
-      <ContactUs />
-      <Members />
-    </TeamMembersWrapper>
+      <TeamMembersWrapper>
+        <ContactUs />
+        <Members />
+      </TeamMembersWrapper>
+    </div>
   );
 };
 
