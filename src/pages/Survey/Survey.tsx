@@ -86,7 +86,11 @@ const Survey = () => {
         </SurveyIntroContents>
       </TitleHeaderBottom>
       {surveyData.survey && (
-        <SurveyContents surveyData={surveyData} surveyScrollRef={surveyScrollRef} />
+        <SurveyContents
+          surveyData={surveyData}
+          surveyScrollRef={surveyScrollRef}
+          setIsLoading={setIsLoading}
+        />
       )}
     </div>
   );

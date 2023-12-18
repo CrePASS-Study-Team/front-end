@@ -70,8 +70,6 @@ const Questions = (props: QuestionsProps) => {
     }
   }, [userAnswer]);
 
-  console.log(userSelectArray);
-
   return (
     <Wrapper userSelectAnswer={userAnswer.answer > 0} ref={questionRef}>
       <Title>{question}</Title>

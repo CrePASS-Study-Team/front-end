@@ -5,7 +5,8 @@ import axios from 'axios';
 import Questions from './Questions';
 import { SurveyProps } from './type';
 
-const SurveyContents = ({ surveyData }: any) => {
+const SurveyContents = (props: any) => {
+  const { surveyData, setIsLoading } = props;
   const { survey, unique_id, length } = surveyData;
 
   const navigate = useNavigate();
@@ -29,9 +30,8 @@ const SurveyContents = ({ surveyData }: any) => {
   }, [survey]);
 
   const postUserAnswerHandle = async () => {
-    console.log(userSelectArray);
-
     try {
+      setIsLoading(true);
       const data = {
         unique_id: unique_id,
         answers: userSelectArray,
@@ -39,12 +39,12 @@ const SurveyContents = ({ surveyData }: any) => {
       const response = await axios.post('https://mbti.crepassplus.com/api/survey/answers', data);
 
       if (response.data.code === 200) {
-        navigate(`/result/${response.data.id}`);
-      } else {
-        console.log(response.data);
+        setIsLoading(false);
+        navigate(`/result/${response.data.data.id}`);
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
