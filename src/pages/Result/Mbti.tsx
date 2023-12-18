@@ -13,8 +13,6 @@ interface MbtiFontColorProps {
 const Mbti = (props: MbitProps) => {
   const { mbtiKey } = props;
 
-  console.log(TYPE_INFOMATION_OBJECT[mbtiKey]);
-
   return (
     <Contents>
       <Subtitle>당신의 성격 유형은</Subtitle>

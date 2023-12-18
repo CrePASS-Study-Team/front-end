@@ -51,7 +51,7 @@ const Survey = () => {
       try {
         const response = await axios.post('https://mbti.crepassplus.com/api/navigation');
 
-        console.log(response.data.data);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }

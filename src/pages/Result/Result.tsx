@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import styled from 'styled-components';
@@ -18,14 +19,14 @@ interface WrapperBgProps {
 const Result = () => {
   const [resultData, setResultData] = useState();
 
+  const params = useParams();
+  const { id } = params;
+
   const mbti = 'INTJ';
 
   const getResultGetApiCall = async () => {
-    const resultId = 'chatcmpl-8RzJBYPsqoia16iLwCqRZvF27W8Ea';
     try {
-      const response = await axios.get(
-        `https://mbti.crepassplus.com/api/survey/result/${resultId}`,
-      );
+      const response = await axios.get(`https://mbti.crepassplus.com/api/survey/result/${id}`);
 
       if (response.data.code === 200) {
         setResultData(response.data.data);

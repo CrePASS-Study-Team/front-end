@@ -18,7 +18,7 @@ const SurveyContents = ({ surveyData }: any) => {
     survey.forEach((data: any, index: number) => {
       const newObject = {
         id: data.id,
-        answer: '',
+        answers: '',
       };
       userAnswerArray.push(newObject);
 
@@ -34,18 +34,15 @@ const SurveyContents = ({ surveyData }: any) => {
     try {
       const data = {
         unique_id: unique_id,
-        answer: userSelectArray,
+        answers: userSelectArray,
       };
-
       const response = await axios.post('https://mbti.crepassplus.com/api/survey/answers', data);
-      // const response = await axios.post('http://3.35.152.198:8000/api/survey/answers', data);
 
-      if (response.data.code) {
-        console.log(response.data);
+      if (response.data.code === 200) {
+        navigate(`/result/${response.data.id}`);
       } else {
         console.log(response.data);
       }
-      navigate('/');
     } catch (error) {
       console.log(error);
     }
