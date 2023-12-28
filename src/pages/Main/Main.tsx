@@ -18,7 +18,11 @@ const Main = () => {
       <TopImage src={HeaderTopLine} alt="bottomLine" />
       <MainContainer>
         <TitleContainer>
-          <MainTitle>CHATGPT 로 확인하는 나의 MBTI 는?</MainTitle>
+          <MainTitleContents>
+            <MainTitle>CTS검사가 너무 정확해 "살짝 소름이 돋을 정도예요"</MainTitle>
+            <MainTitle>라고 성격 유형 검사를 마친 한 참여자는</MainTitle>
+            <MainTitle>말했습니다.</MainTitle>
+          </MainTitleContents>
           <SubTitle>
             쉽고 간단하면서도 정확한 성격 유형 검사를 통해 당신이 누구이며, <br />왜 그러한 특정
             행동 성향을 보이는지 확인하십시오.
@@ -26,8 +30,8 @@ const Main = () => {
         </TitleContainer>
         <ButtonContainer>
           <Button onClick={onClickSurveyButton}>검사 실시 {'->'} </Button>
-          <MainImage style={{ backgroundImage: `url(${mainImage})` }} />
         </ButtonContainer>
+        <MainImage style={{ backgroundImage: `url(${mainImage})` }} />
       </MainContainer>
     </Wrapper>
   );
@@ -45,31 +49,42 @@ const TopImage = styled.img`
 
 const MainImage = styled.div`
   position: absolute;
+  top: 300px;
   left: 0;
   right: 0;
   height: 100%;
   background-size: cover;
+
+  z-index: 0;
 `;
 
 const MainContainer = styled.div`
-  color: white;
-  background-color: #ffc061;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  padding-top: 100px;
+
   height: 100%;
+
+  color: white;
+  background-color: #ffc061;
 `;
 
 const TitleContainer = styled.div`
+  z-index: 500;
+`;
+
+const MainTitleContents = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  margin-bottom: 2rem;
 `;
 
 const MainTitle = styled.div`
-  margin-bottom: 2rem;
   font-size: 2.5rem;
   font-weight: 900;
 `;
@@ -83,6 +98,8 @@ const SubTitle = styled.div`
 
 const ButtonContainer = styled.div`
   height: 500px;
+
+  z-index: 500;
 `;
 
 const Button = styled.button`

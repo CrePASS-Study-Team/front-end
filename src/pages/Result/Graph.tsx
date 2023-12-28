@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Bar from './Bar';
 
+import { PercentageType } from './Result';
+
 interface BarColorArrayType {
   id: number;
   leftText: string;
@@ -11,41 +13,12 @@ interface BarColorArrayType {
   rightName: string;
 }
 
-interface mbtiPercentType {
-  e: string;
-  i: string;
-  n: string;
-  s: string;
-  f: string;
-  t: string;
-  p: string;
-  j: string;
-
-  [key: string]: string;
+interface GraphProps {
+  percentage: PercentageType;
 }
 
-const Graph = () => {
-  // const e = '41%';
-  // const i = '59%';
-  // const n = '60%';
-  // const s = '40%';
-  // const f = '75%';
-  // const t = '25%';
-  // const p = '25%';
-  // const j = '75%';
-
-  const mbtiPersentData: mbtiPercentType = {
-    e: '41%',
-    i: '59%',
-    n: '60%',
-    s: '40%',
-    f: '75%',
-    t: '25%',
-    p: '25%',
-    j: '75%',
-  };
-
-  // const defaultColor = '#F0F0F0';
+const Graph = (props: GraphProps) => {
+  const { percentage } = props;
 
   const BAR_COLOR_ARRAY: BarColorArrayType[] = [
     {
@@ -53,32 +26,32 @@ const Graph = () => {
       leftText: 'E',
       rightText: 'I',
       color: '#4298B4',
-      leftName: 'e',
-      rightName: 'i',
+      leftName: 'E',
+      rightName: 'I',
     },
     {
       id: 2,
       leftText: 'N',
       rightText: 'S',
       color: '#E4ae3a',
-      leftName: 'n',
-      rightName: 's',
+      leftName: 'N',
+      rightName: 'S',
     },
     {
       id: 3,
       leftText: 'F',
       rightText: 'T',
       color: '#33A474',
-      leftName: 'e',
-      rightName: 't',
+      leftName: 'F',
+      rightName: 'T',
     },
     {
       id: 4,
       leftText: 'P',
       rightText: 'J',
       color: '#88619A',
-      leftName: 'p',
-      rightName: 'j',
+      leftName: 'P',
+      rightName: 'J',
     },
   ];
 
@@ -90,8 +63,8 @@ const Graph = () => {
           <Bar
             key={data.id}
             data={data}
-            leftPercent={mbtiPersentData[data.leftName]}
-            rightPercent={mbtiPersentData[data.rightName]}
+            leftPercent={percentage[data.leftName]}
+            rightPercent={percentage[data.rightName]}
           />
         ))}
       </BarContenst>

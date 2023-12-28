@@ -35,9 +35,13 @@ interface UserInputProps {
   answer: number;
 }
 
-type WrapperStyledProps = {
+interface WrapperStyledProps {
   userSelectAnswer: boolean;
-};
+}
+
+interface TextContentsColorProps {
+  fontColor: string;
+}
 
 const Questions = (props: QuestionsProps) => {
   const { question, questionId, userSelectArray, setUserSelectArray } = props;
@@ -74,7 +78,7 @@ const Questions = (props: QuestionsProps) => {
     <Wrapper userSelectAnswer={userAnswer.answer > 0} ref={questionRef}>
       <Title>{question}</Title>
       <SelectOptionContents>
-        <TextContents>동의</TextContents>
+        <TextContents fontColor="#33A474">동의</TextContents>
         {SELECT_OPTION_DATA.map((data: SelectOptionProps) => {
           const { id, src, alt, selectedSrc } = data;
 
@@ -103,7 +107,7 @@ const Questions = (props: QuestionsProps) => {
           );
         })}
 
-        <TextContents>비동의</TextContents>
+        <TextContents fontColor="#5900FF">비동의</TextContents>
       </SelectOptionContents>
     </Wrapper>
   );
@@ -136,7 +140,11 @@ const SelectOptionContents = styled.div`
   height: 100%;
 `;
 
-const TextContents = styled.div``;
+const TextContents = styled.div<TextContentsColorProps>`
+  color: ${props => props.fontColor};
+
+  font-weight: 900;
+`;
 
 const SelectOption = styled.img`
   margin: 0 26px;

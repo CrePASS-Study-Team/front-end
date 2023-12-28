@@ -14,15 +14,31 @@ interface WrapperBgProps {
   bg: string;
 }
 
-// import { TYPE_INFOMATION_OBJECT } from '../Result/MBTI_INFO';
+interface ResultDataType {
+  id: string;
+  percentage: PercentageType;
+  result: string;
+  type: string;
+}
+
+export interface PercentageType {
+  I: string;
+  E: string;
+  N: string;
+  S: string;
+  T: string;
+  F: string;
+  J: string;
+  P: string;
+
+  [key: string]: string;
+}
 
 const Result = () => {
-  const [resultData, setResultData] = useState();
+  const [resultData, setResultData] = useState<ResultDataType>();
 
   const params = useParams();
   const { id } = params;
-
-  const mbti = 'INTJ';
 
   const getResultGetApiCall = async () => {
     try {
@@ -40,15 +56,17 @@ const Result = () => {
     getResultGetApiCall();
   }, []);
 
-  console.log(resultData);
-
   return (
     <>
-      <Header />
-      <Wrapper bg={MBTI_BACKGROUND_OBJECT[mbti]}>
-        <Graph />
-        <Mbti mbtiKey={mbti} />
-      </Wrapper>
+      {resultData && (
+        <>
+          <Header />
+          <Wrapper bg={MBTI_BACKGROUND_OBJECT[resultData.type]}>
+            <Graph percentage={resultData.percentage} />
+            <Mbti mbtiKey={resultData.type} />
+          </Wrapper>
+        </>
+      )}
     </>
   );
 };

@@ -14,8 +14,9 @@ interface BarProps {
   rightPercent: string;
 }
 
-interface BarColorProps {
+interface StyledBarProps {
   bg: string;
+  width: string;
 }
 
 interface TextColorProps {
@@ -39,8 +40,8 @@ const Bar = (props: BarProps) => {
           <SpecificMbti>{data.leftText}</SpecificMbti>
           <MbtiPercent>{leftPercent}</MbtiPercent>
         </SpecificText>
-        <BarLeft bg={colorHandle()!.leftColor} />
-        <BarRight bg={colorHandle()!.rightColor} />
+        <BarLeft bg={colorHandle()!.leftColor} width={leftPercent} />
+        <BarRight bg={colorHandle()!.rightColor} width={rightPercent} />
         <SpecificTextRight fontColor={data.color}>
           <SpecificMbti>{data.rightText}</SpecificMbti>
           <MbtiPercent>{rightPercent}</MbtiPercent>
@@ -100,8 +101,8 @@ const BarWraper = styled.div`
   margin-top: 80px;
 `;
 
-const BarRight = styled.div<BarColorProps>`
-  width: 50%;
+const BarRight = styled.div<StyledBarProps>`
+  width: ${props => props.width};
   height: 50px;
 
   background-color: ${props => props.bg || '#f0f0f0'};
@@ -112,8 +113,8 @@ const BarRight = styled.div<BarColorProps>`
   z-index: 3;
 `;
 
-const BarLeft = styled.div<BarColorProps>`
-  width: 50%;
+const BarLeft = styled.div<StyledBarProps>`
+  width: ${props => props.width};
   height: 50px;
 
   background-color: ${props => props.bg || '#f0f0f0'};
