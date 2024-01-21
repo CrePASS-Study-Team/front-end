@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import styled from 'styled-components';
 import HeaderTopLine from '../../assets/HeaderBottomLine.png';
 import mainImage from '../../assets/main.png';
+import axios from 'axios';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -11,6 +12,25 @@ const Main = () => {
   const onClickSurveyButton = () => {
     navigate('/survey');
   };
+
+  const apiCall = async () => {
+    try {
+      const response = await axios.post('https://h-fund.crepassplus.com/api/user/signin', {
+        id: 'crepass',
+        password: 'crepass',
+      });
+
+      if (response.data.code === 200) {
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    apiCall();
+  }, []);
 
   return (
     <Wrapper>

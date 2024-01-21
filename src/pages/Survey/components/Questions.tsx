@@ -7,13 +7,13 @@ import surveyF4 from '../../../assets/survey/surveyF4.png';
 import surveyF5 from '../../../assets/survey/surveyF5.png';
 import surveyF6 from '../../../assets/survey/surveyF6.png';
 import surveyF7 from '../../../assets/survey/surveyF7.png';
-import surveyT1 from '../../../assets/survey/surveyT1.png';
-import surveyT2 from '../../../assets/survey/surveyT2.png';
-import surveyT3 from '../../../assets/survey/surveyT3.png';
+import surveyT7 from '../../../assets/survey/surveyT1.png';
+import surveyT6 from '../../../assets/survey/surveyT2.png';
+import surveyT5 from '../../../assets/survey/surveyT3.png';
 import surveyT4 from '../../../assets/survey/surveyT4.png';
-import surveyT5 from '../../../assets/survey/surveyT5.png';
-import surveyT6 from '../../../assets/survey/surveyT6.png';
-import surveyT7 from '../../../assets/survey/surveyT7.png';
+import surveyT3 from '../../../assets/survey/surveyT5.png';
+import surveyT2 from '../../../assets/survey/surveyT6.png';
+import surveyT1 from '../../../assets/survey/surveyT7.png';
 
 interface QuestionsProps {
   question: string;
@@ -50,7 +50,7 @@ const Questions = (props: QuestionsProps) => {
   const [userAnswer, setUserAnswer] = useState<UserInputProps>({ id: questionId, answer: 0 });
 
   const onClickHandle = (option: number) => {
-    const options = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    const options = ['-3', '-2', '-1', '0', '1', '2', '3'];
 
     if (option >= 1 && option <= 7) {
       const updatedArray = userSelectArray.map(item => {
